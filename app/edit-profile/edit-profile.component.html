@@ -1,0 +1,160 @@
+
+<app-nav></app-nav>
+<br>
+<div class="container">
+    <div class="row gutters">
+    <div >
+    <div class="card">
+        <div class="card-body" >
+            <form (ngSubmit)="onSubmit()">
+            <div class="row gutters" >
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Personal Details</h6>
+                </div>
+                <div class="col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="firstName">First Name :</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName" [(ngModel)]="employee.firstName" >
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="lastName">Last Name :</label>
+                        <input type="text" name="lastName" class="form-control" id="lastName" [(ngModel)]="employee.lastName">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <h4 class="text-danger">{{msg}}</h4>
+                        <label for="phone">Phone Number : </label>
+                        <input type="number" name="phone" class="form-control" id="phone" [(ngModel)]="employee.phoneNo">
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="Bio">Bio :</label>
+                        <input type="text" name="Bio" class="form-control" id="Bio" [(ngModel)]="employee.bio">
+                    </div>
+            </div>
+            <br>
+            <div class="row gutters" >
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<br>
+<div class="container">
+    
+    <div class="row gutters-sm">
+        <div class="col-sm-6 mb-3">
+          <div class="card">
+            
+            <div class="card-body">
+                <section id="action" class="bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#SkillsModal">
+                                <i class="bi bi-person-plus-fill"></i> Add Skills&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="bi bi-arrow-right"></i>
+                              </button>              
+                            </div>                
+                        </div>
+                        
+                    </div>
+                    
+                  </section>
+                  <br>
+              <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Skills</i></h4>
+              <h4 class="text-danger">{{skillMsg}}</h4>
+              <div *ngFor="let skill of employee.skills">
+                    <h5>{{skill.skillName}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+                <section id="action" class="bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <div>
+                              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#CertificatesModal">
+                                <i class="bi bi-person-plus-fill"></i> Add Certificates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="bi bi-arrow-right"></i>
+                              </button>              
+                            </div>                
+                        </div>
+                        
+                    </div>
+                    
+                  </section>
+                  <br>
+              <h4 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Certificates</i></h4>
+              <h4 class="text-danger">{{certificateMsg}}</h4>
+              <div *ngFor="let certificate of employee.certificates">
+                <h5>{{certificate.certificateName}}</h5>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="modal fade" id="SkillsModal" tabindex="-1" aria-labelledby="SkillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="SkillsModalLabel">Add Skill</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmitSkill()">
+            <div class="form-group">
+                <label for="name">Skill Name</label>
+                <input type="text" class="form-control" [(ngModel)]="skill.skillName" name="skillName" id="skillName">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </form>
+        </div> 
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="CertificatesModal" tabindex="-1" aria-labelledby="CertificateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="CertificateModalLabel">Add Certificate</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmitCertificate()">
+            <div class="form-group">
+                <label for="name">Certificate Name</label>
+                <input type="text" class="form-control" [(ngModel)]="certificate.certificateName" name="certificateName" id="certificateName">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+            </div>
+        </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>

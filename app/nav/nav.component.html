@@ -1,0 +1,34 @@
+<nav *ngIf="1==1" class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+    <div class="container">
+    <a class="navbar-brand" href="#">Professional Consultancy Services</a>
+    <ul class="navbar-nav">
+        <li class="nav-tem" *ngIf="employee.role=='EMPLOYER'">
+            <a href="{{employeeId}}/dashboard" routerLinkActive="active" class="nav-link">Employer Dashboard</a>
+        </li>
+        <li class="nav-tem">
+            <a href="{{employeeId}}/employees" routerLinkActive="active" class="nav-link">Employees</a>
+        </li>
+        <li class="nav-tem">
+            <a href="{{employeeId}}/skills" routerLinkActive="active" class="nav-link">Skills</a>
+        </li>
+        <li class="nav-tem">
+            <a href="{{employeeId}}/certificates" routerLinkActive="active" class="nav-link">certificates</a>
+        </li>
+    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid"></div>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome {{employee.firstName}}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" href="{{employeeId}}/profile">Show Profile</a></li>
+            <li><a class="dropdown-item" href="{{employeeId}}/editProfile">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="login">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</nav>
